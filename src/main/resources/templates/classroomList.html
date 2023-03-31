@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="ISO-8859-1">
+
+
+  <title>Product sustem</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+
+</head>
+
+<body>
+
+
+<div class="col-12">
+
+
+  <h3 class="text-center">Classrooms</h3>
+  <hr>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">image</th>
+      <th scope="col">Room Number</th>
+      <th scope="col">Building Name</th>
+      <th scope="col">Total Capacity</th>
+      <th scope="col">description</th>
+      <th scope="col">delete classroom</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="room :${rooms}">
+      <th scope="row"><img alt="" th:src="*{'data:image/jpeg;base64,'+{room.image}}" style="width: 100px;height: 100px;"></th>
+      <td>[[*{room.roomNum}]]
+        <!-- Button trigger modal --> <br>
+        <button type="button" class="btn btn-success btn-sm mt-2"
+                data-toggle="modal"
+                th:attr="data-target='#exampleModalCenter'+*{room.id}">change
+          room number</button> <!-- Modal -->
+
+        <div class="modal fade"
+             th:id="*{'exampleModalCenter'+{room.id}}" tabindex="-1"
+             role="dialog" aria-labelledby="exampleModalCenterTitle"
+             aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Change
+                  room number</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="/changeRoomNum" method="post">
+                  <div class="form-group">
+                    <label>Classroom id</label> <input type="hidden"
+                                                     th:value="*{room.id}" class="form-control" name="id">
+                    <label>New Room Number</label> <input type="text"
+                                                           name="newClassroomNum" class="form-control"> <br>
+                    <button type="submit" class="btn btn-primary">submit</button>
+                  </div>
+                </form>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </td>
+
+
+      <td>[[*{room.buildingName}]] <!-- Button trigger modal -->
+        <br>
+        <button type="button" class="btn btn-success btn-sm mt-2"
+                data-toggle="modal"
+                th:attr="data-target='#exampleModalCenterDesc'+${room.id}">Change
+          Building Name</button> <!-- Modal -->
+        <div class="modal fade"
+             th:id="*{'exampleModalCenterDesc'+{room.id}}" tabindex="-1"
+             role="dialog" aria-labelledby="exampleModalCenterTitle"
+             aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">change
+                  product description</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <form action="/changeBuildingN" method="post">
+                  <div class="form-group">
+                    <label>product id</label> <input type="text"
+                                                     th:value="*{room.id}" class="form-control" name="id">
+                    <label>New Building Name</label> <input type="text"
+                                                                  name="newBuildingName" class="form-control"> <br>
+                    <button type="submit" class="btn btn-primary">submit</button>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+
+
+
+      <td>[[*{room.totalCapacity}]] <!-- Button trigger modal -->
+        <br>
+        <button type="button" class="btn btn-success btn-sm mt-2"
+                data-toggle="modal"
+                th:attr="data-target='#exampleModalCenterDesc'+${room.id}">Change
+          Total Capacity</button> <!-- Modal -->
+        <div class="modal fade"
+             th:id="*{'exampleModalCenterDesc'+{room.id}}" tabindex="-1"
+             role="dialog" aria-labelledby="exampleModalCenterTitle"
+             aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Change
+                 Total Capacity</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <form action="/changeTotalC" method="post">
+                  <div class="form-group">
+                    <label>total capacity id</label> <input type="text"
+                                                     th:value="*{room.id}" class="form-control" name="id">
+                    <label>New Total Capacity</label> <input type="text"
+                                                            name="newTotalCapacity" class="form-control"> <br>
+                    <button type="submit" class="btn btn-primary">submit</button>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+
+
+      <td>[[*{room.description}]] <!-- Button trigger modal -->
+        <br>
+        <button type="button" class="btn btn-success btn-sm mt-2"
+                data-toggle="modal"
+                th:attr="data-target='#exampleModalCenterDesc'+${room.id}">Change
+          Description</button> <!-- Modal -->
+        <div class="modal fade"
+             th:id="*{'exampleModalCenterDesc'+{room.id}}" tabindex="-1"
+             role="dialog" aria-labelledby="exampleModalCenterTitle"
+             aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">change
+                  room description</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <form action="/changeDesc" method="post">
+                  <div class="form-group">
+                    <label>classroom id</label> <input type="text"
+                                                     th:value="*{room.id}" class="form-control" name="id">
+                    <label>New Building Name</label> <input type="text"
+                                                            name="newDescription" class="form-control"> <br>
+                    <button type="submit" class="btn btn-primary">submit</button>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+
+
+
+
+      <td><a th:href="@{/deleteClass/{id}(id=${room.id})}"
+             class="btn btn-danger mt-4">delete</a></td>
+    </tr>
+    <a th:href="manage_classroom" class="btn btn-danger mt-4">Back</a>
+    </tbody>
+  </table>
+  <hr>
+</div>
+
+<script src="js/scripts.js"></script>
+
+</body>
+
+</html>
+
+

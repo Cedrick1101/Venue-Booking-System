@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+
+
+    <title>Available Classrooms Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+
+</head>
+
+<body>
+
+
+<div class="col-12">
+
+
+    <h3 class="text-center">Classrooms</h3>
+    <hr>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+<!--            <th scope="col">image</th>-->
+<!--            <th scope="col">Room Number</th>-->
+<!--            <th scope="col">Building Name</th>-->
+<!--            <th scope="col">Total Capacity</th>-->
+<!--            <th scope="col">description</th>-->
+            <th scope="col">Booking Date</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">End Time</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+<!--        <tr th:each="mybooking :${MyBookings}">-->
+<!--            <th scope="row"><img alt="" th:src="*{'data:image/jpeg;base64,'+{mybooking.image}}" style="width: 100px;height: 100px;"></th>-->
+<!--            <td>[[*{mybooking.roomNum}]]-->
+
+<!--            </td>-->
+
+
+<!--            <td>[[*{mybooking.buildingName}]] &lt;!&ndash; Button trigger modal &ndash;&gt;-->
+
+<!--            </td>-->
+
+
+
+<!--            <td>[[*{mybooking.totalCapacity}]] &lt;!&ndash; Button trigger modal &ndash;&gt;-->
+
+<!--            </td>-->
+
+
+<!--            <td>[[*{mybooking.description}]] &lt;!&ndash; Button trigger modal &ndash;&gt;-->
+
+<!--            </td>-->
+
+            <td>[[*{mybooking.bookingDate}]] <!-- Button trigger modal -->
+
+            </td>
+
+            <td>[[*{mybooking.startTime}]] <!-- Button trigger modal -->
+
+            </td>
+
+            <td>[[*{mybooking.endTime}]] <!-- Button trigger modal -->
+
+            </td>
+
+            <td><a th:href="@{/goToBookPage/{id}(id=${mybooking.id})}"
+                   class="btn btn-primary mt-4">Cancel</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+</div>
+
+<script src="js/scripts.js"></script>
+
+</body>
+
+</html>
+
+

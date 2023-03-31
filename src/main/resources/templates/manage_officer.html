@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="styleclass.css">
+</head>
+<body>
+<div class="sidebar">
+  <h1>Admin Dashboard</h1>
+  <ul>
+    <li class="active"><a href="adminpage">Dashboard</a></li>
+    <li><a th:href="showNewOfficerForm">Add Officer</a></li>
+    <li><a th:href="officerlist">Manage Officers</a></li>
+  </ul>
+</div>
+<div class="content">
+  <h2>Officers</h2>
+  <div class="col-lg-6 order-1 order-lg-2">
+    <img src="assets/img/surveillance.svg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
+  </div>
+</div>
+</body>
+</html>
